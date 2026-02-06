@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="es" data-theme="sanvalentin">
+<html lang="es" data-theme="base">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rabbits & Sunflowers · Florería en CDMX</title>
-  <meta name="description" content="Arreglos florales con entrega el mismo día en CDMX. Pide por WhatsApp.">
+  <meta name="description" content="Arreglos florales con entrega el mismo día en CDMX. 
+    Pide por WhatsApp.">
   <meta name="theme-color" content="#F7D958">
   <style>
     /* ===== Temas de color ===== */
@@ -170,6 +171,7 @@
         <button class="badge" data-filter="aniversario">Aniversario</button>
         <button class="badge" data-filter="condolencias">Condolencias</button>
         <button class="badge" data-filter="express">Express hoy</button>
+        <button class="badge" data-filter="regalos">Regalos</button>        
       </div>
     </div>
   </section>
@@ -217,11 +219,12 @@
 
     // Catálogo (5 productos) — nombres emocionales + imágenes válidas
     const CATALOGO = [
-      { id:"te-pienso",   titulo:"Te pienso 🌻",                precio:599, categoria:["cumple","express"], img:"https://images.unsplash.com/photo-1592924357228-91a4daadcfea?q=80&w=1200&auto=format&fit=crop", express:true },
-      { id:"dulce-momento", titulo:"Dulce momento 🍫+🌹",       precio:949, categoria:["aniversario"],      img:"https://images.unsplash.com/photo-1509043759401-136742328bb3?q=80&w=1200&auto=format&fit=crop",  express:false },
-      { id:"primavera",   titulo:"Primavera en tus manos ✨",   precio:849, categoria:["cumple"],           img:"https://images.unsplash.com/photo-1485686531765-ba676f7e57d1?q=80&w=1200&auto=format&fit=crop", express:false },
+      { id:"te-pienso",   titulo:"Te pienso 🌻",                precio:599, categoria:["cumple","express","regalos"], img:"https://images.unsplash.com/photo-1592924357228-91a4daadcfea?q=80&w=1200&auto=format&fit=crop", express:true },
+      { id:"dulce-momento", titulo:"Dulce momento 🍫+🌹",       precio:949, categoria:["aniversario","regalos"],      img:"https://images.unsplash.com/photo-1509043759401-136742328bb3?q=80&w=1200&auto=format&fit=crop",  express:false },
+      { id:"primavera",   titulo:"Primavera en tus manos ✨",   precio:849, categoria:["cumple","regalos"],           img:"https://images.unsplash.com/photo-1485686531765-ba676f7e57d1?q=80&w=1200&auto=format&fit=crop", express:false },
       { id:"lo-siento",   titulo:"Lo siento 💔➡️💛",            precio:799, categoria:["condolencias"],     img:"https://images.unsplash.com/photo-1464965911861-746a04b4bca6?q=80&w=1200&auto=format&fit=crop", express:false },
-      { id:"rs-bouquet",  titulo:"Bouquet R&S (sorprende hoy)",precio:999, categoria:["aniversario","express"], img:"https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop", express:true }
+      { id:"rs-bouquet",  titulo:"Bouquet R&S (sorprende hoy)",precio:999, categoria:["aniversario","express","regalos"], img:"https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop", express:true },
+      { id:"rs-bouquet",  titulo:"Regalos 🌻+👜",precio:999, categoria:["express","regalos"], img:"https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop", express:true }  
     ];
 
     // Utilidades
