@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="sanvalentin">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,24 +7,47 @@
   <meta name="description" content="Arreglos florales con entrega el mismo día en CDMX. Pide por WhatsApp.">
   <meta name="theme-color" content="#F7D958">
   <style>
-    :root{
-      /* Paleta Rabbits & Sunflowers */
-      --amarillo:#F7D958;   /* primario */
-      --verde:#6F8F3A;      /* secundario */
-      --verde-dark:#355E3B; /* hover/badges */
-      --cafe:#70441A;       /* headings/marca */
-      --dorado:#E2A52E;     /* etiqueta/promos */
-      --beige:#E8CCAB;
-      --marfil:#FAF0DD;
-      --crema:#FDFDFC;
-      --texto:#212121;
-      --gris-600:#757575;
-      --borde:#E8CCAB;
+    /* ===== Temas de color ===== */
+    html[data-theme="base"]{
+      /* Base juvenil (más fresco) */
+      --amarillo:#FFD84D;
+      --verde:#6AC26A;
+      --verde-dark:#2E8742;
+      --cafe:#5A3412;
+      --dorado:#FFB84A;
+      --crema:#FFF7FB;   /* fondo general */
+      --marfil:#FFF1F5;  /* tarjetas/fajas suaves */
+      --texto:#1B1B1B;
+      --gris-600:#6B6B6B;
+      --borde:#F0D6E0;
     }
+    html[data-theme="sanvalentin"]{
+      /* San Valentín (rosa suave y acentos románticos) */
+      --amarillo:#FFD84D;
+      --verde:#E2557A;       /* usamos rosa como “verde” para CTA */
+      --verde-dark:#C94366;
+      --cafe:#5A3412;
+      --dorado:#F1A5B9;
+      --crema:#FFF1F5;
+      --marfil:#FFE7EF;
+      --texto:#1B1B1B;
+      --gris-600:#755964;
+      --borde:#F3C6D6;
+    }
+
+    /* ===== Base ===== */
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif;color:var(--texto);background:
-  url("assets/fondos/valentin-bg.png") repeat,
-  #fff1f5;}
+    html,body{
+      margin:0; padding:0;
+      font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--texto);
+      /* Fondo romántico suave + imagen temporal para 14F */
+      background:
+        radial-gradient(circle at 20% 20%, rgba(226,85,122,.08), transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(226,85,122,.06), transparent 45%),
+        url("assets/fondos/valentin-bg.png") repeat,
+        var(--crema);
+    }
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
     .container{max-width:1100px;margin:0 auto;padding:0 16px}
@@ -32,7 +55,8 @@
     header{position:sticky;top:0;z-index:20;background:rgba(253,253,252,.9);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--borde)}
     header .wrap{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
     .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--cafe)}
-    .brand img{width:36px;height:36px;border-radius:10px;object-fit:cover}
+    .brand img{width:48px;height:auto;border-radius:12px}
+
     nav a{padding:8px 10px;border-radius:8px}
     nav a:hover{background:#fff0be}
 
@@ -47,14 +71,27 @@
     .hero-grid{display:grid;gap:16px}
     .hero h1{font-size:32px;line-height:1.1;margin:0 0 8px;color:var(--cafe)}
     .hero p{color:var(--gris-600);margin:0 0 16px}
-    .hero .img{border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:var(--marfil);border:1px solid var(--borde);display:grid;place-items:center}
+
+    /* Contenedor visual del hero (logo/imagen) */
+    .hero .img{
+      border-radius:24px;
+      background:var(--marfil);
+      border:1px solid var(--borde);
+      display:flex; align-items:center; justify-content:center;
+      padding:24px;
+    }
+    .hero .img img{
+      max-width:100%;
+      max-height:320px;
+      object-fit:contain;
+    }
 
     .search{margin-top:10px}
     .search input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--borde);outline:none;background:#fff}
 
     .badges{display:flex;gap:8px;overflow:auto;padding-bottom:4px}
     .badge{padding:8px 12px;border:1px solid var(--borde);border-radius:999px;white-space:nowrap;background:#fff;cursor:pointer}
-    .badge.active, .badge:hover{background:#fff7d6;border-color:#e5c23a}
+    .badge.active, .badge:hover{background:#fff7d6;border-color:var(--dorado)}
 
     .section{padding:10px 0 20px}
     .grid{display:grid;gap:12px}
@@ -101,22 +138,24 @@
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <h1>Arreglos que hablan por ti.<br><span style="color:var(--verde)">Entrega hoy en CDMX</span></h1>
-        <p>Pedidos rápidos por WhatsApp. Pago contra entrega o transferencia.</p>
+        <h1>Arreglos que hablan por ti.<br><span style="color:var(--verde)">Entrega HOY en CDMX 🚀</span></h1>
+        <p>Flores que dicen lo que tú no sabes escribir 💐 Pide por WhatsApp y sorprende hoy.</p>
         <div class="cta-row" style="display:flex;gap:8px;flex-wrap:wrap">
-          <a id="ctaHero" class="btn btn-secondary" target="_blank" rel="noopener">Pedir por WhatsApp</a>
-          <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
+          <a id="ctaHero" class="btn btn-secondary" target="_blank" rel="noopener">Pedir ahora 💬</a>
+          <a href="#catalogo" class="btn btn-primary">Ver catálogo ✨</a>
         </div>
         <div class="search">
           <label for="buscar" class="visualmente-oculto" style="position:absolute;left:-9999px">Buscar</label>
-          <input id="buscar" type="search" placeholder="Buscar: rosas rojas, cumpleaños…" />
+          <input id="buscar" type="search" placeholder="Buscar: rosas rojas, cumpleaños…">
         </div>
         <div class="band" style="margin-top:10px;font-size:14px">
           🌻 Envíos el mismo día en CDMX si pides antes de las <strong>15:00</strong>.
         </div>
       </div>
+
       <div class="img">
-        <img src="assets/hero/descarga.jfif" alt="Rabbits & Sunflowers">
+        <!-- Reemplaza por tu imagen .png/.jpg -->
+        <img src="assets/hero/hero-sanvalentin.jpg" alt="Rabbits & Sunflowers">
       </div>
     </div>
   </section>
@@ -129,7 +168,7 @@
         <button class="badge active" data-filter="all">Todo</button>
         <button class="badge" data-filter="cumple">Cumpleaños</button>
         <button class="badge" data-filter="aniversario">Aniversario</button>
-        <button class="badge" data-filter="condolencias">Azulitos</button>
+        <button class="badge" data-filter="condolencias">Condolencias</button>
         <button class="badge" data-filter="express">Express hoy</button>
       </div>
     </div>
@@ -147,7 +186,7 @@
   <section id="nosotros" class="section">
     <div class="container">
       <h2 style="color:var(--cafe)">Nosotros</h2>
-      <p style="color:var(--gris-600)">Somos una florería nueva en CDMX. Cuidamos cada detalle: flores frescas, arreglos personalizados y entregas puntuales. Escríbenos y armamos el ramo perfecto para tu ocasión.</p>
+      <p style="color:var(--gris-600)">Somos una florería en CDMX pensada para sorprender: flores frescas, arreglos personalizados y entregas puntuales. Escríbenos y armamos el ramo perfecto para tu ocasión.</p>
     </div>
   </section>
 
@@ -176,22 +215,22 @@
     // NÚMERO DE WHATSAPP (cámbialo cuando tengas el real). MX: 52155XXXXXXXX, sin +
     const WA_NUMBER = "521551234567";
 
-    // Catálogo (5 productos)
+    // Catálogo (5 productos) — nombres emocionales + imágenes válidas
     const CATALOGO = [
-      { id:"sunflower-classic", titulo:"Girasoles clásicos (6)", precio:599,  categoria:["cumple","express"], img:"https://images.unsplash.com/photo-1592924357228-91a4daadcfea?q=80&w=1200&auto=format&fit=crop", express:true },
-      { id:"rosas-choco",       titulo:"Rosas + caja de chocolates", precio:949, categoria:["aniversario"], img:"https://images.unsplash.com/photo-1509043759401-136742328bb3?q=80&w=1200&auto=format&fit=crop", express:false },
-      { id:"mix-primavera",     titulo:"Mix Primavera", precio:849, categoria:["cumple"], img:"https://images.unsplash.com/photo-1485686531765-ba676f7e57d1?q=80&w=1200&auto=format&fit=crop", express:false },
-      { id:"lily-blanco",       titulo:"Azulitos", precio:799, categoria:["condolencias"], img:"https://pin.it/6YlRDIHBD", express:false },
-      { id:"bouquet-rs",        titulo:"Bouquet Rabbits & Sunflowers", precio:999, categoria:["aniversario","express"], img:"https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop", express:true }
+      { id:"te-pienso",   titulo:"Te pienso 🌻",                precio:599, categoria:["cumple","express"], img:"https://images.unsplash.com/photo-1592924357228-91a4daadcfea?q=80&w=1200&auto=format&fit=crop", express:true },
+      { id:"dulce-momento", titulo:"Dulce momento 🍫+🌹",       precio:949, categoria:["aniversario"],      img:"https://images.unsplash.com/photo-1509043759401-136742328bb3?q=80&w=1200&auto=format&fit=crop",  express:false },
+      { id:"primavera",   titulo:"Primavera en tus manos ✨",   precio:849, categoria:["cumple"],           img:"https://images.unsplash.com/photo-1485686531765-ba676f7e57d1?q=80&w=1200&auto=format&fit=crop", express:false },
+      { id:"lo-siento",   titulo:"Lo siento 💔➡️💛",            precio:799, categoria:["condolencias"],     img:"https://images.unsplash.com/photo-1464965911861-746a04b4bca6?q=80&w=1200&auto=format&fit=crop", express:false },
+      { id:"rs-bouquet",  titulo:"Bouquet R&S (sorprende hoy)",precio:999, categoria:["aniversario","express"], img:"https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop", express:true }
     ];
 
     // Utilidades
-    const $$ = s => document.querySelector(s);
-    const $all = s => Array.from(document.querySelectorAll(s));
+    const $$  = s => document.querySelector(s);
+    const $all= s => Array.from(document.querySelectorAll(s));
     const money = n => `$${n.toLocaleString("es-MX")} MXN`;
 
     function waLink(productoTitulo){
-      const texto = `Hola 👋, quiero pedir el arreglo: ${productoTitulo}. ¿Tienen entrega hoy?`;
+      const texto = `Hola 👋, me interesa el arreglo: "${productoTitulo}". ¿Está disponible para entrega hoy en CDMX? 🌻`;
       return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(texto)}`;
     }
     function waGeneral(){
@@ -200,7 +239,7 @@
     }
 
     function renderProductos(filtro="all", busqueda=""){
-      const wrap = $$("#productos");
+      const wrap = $("#productos");
       wrap.innerHTML = "";
       let items = [...CATALOGO];
 
@@ -228,7 +267,7 @@
             <h4 style="margin:0 0 4px;font-weight:800;color:var(--cafe)">${p.titulo}</h4>
             <p class="price" style="margin:0 0 8px">${money(p.precio)}</p>
             <div style="display:flex;gap:8px;flex-wrap:wrap">
-              <a class="btn btn-secondary" href="${waLink(p.titulo)}" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+              <a class="btn btn-secondary" href="${waLink(p.titulo)}" target="_blank" rel="noopener">Pedir ahora 💬</a>
               <button class="btn btn-outline" aria-label="Copiar título" data-copy="${p.titulo}">Copiar nombre</button>
             </div>
           </div>
@@ -237,7 +276,7 @@
       });
     }
 
-    // Eventos UI
+    // Eventos UI (corregidos ||)
     document.addEventListener("click", e=>{
       const btn = e.target.closest("[data-copy]");
       if(btn){
@@ -251,26 +290,29 @@
       if(chip && chip.dataset.filter){
         $all(".badge").forEach(c=>c.classList.remove("active"));
         chip.classList.add("active");
-        renderProductos(chip.dataset.filter, $$("#buscar").value || "");
+        renderProductos(chip.dataset.filter, $("#buscar").value || "");
       }
     });
 
-    $$("#buscar").addEventListener("input", e=>{
+    $("#buscar").addEventListener("input", e=>{
       const active = document.querySelector(".badge.active") || document.querySelector(".badge[data-filter='all']");
-      const filtro = active?.dataset.filter || "all";
+      const filtro = (active && active.dataset.filter) || "all";
       renderProductos(filtro, e.target.value);
     });
 
     // Enlaces WA generales
-    $$("#ctaHero").href = waGeneral();
-    $$("#waFab").href = waGeneral();
-    $$("#waContacto").href = waGeneral();
+    $("#ctaHero").href = waGeneral();
+    $("#waFab").href = waGeneral();
+    $("#waContacto").href = waGeneral();
 
     // Año footer
-    $$("#year").textContent = new Date().getFullYear();
+    $("#year").textContent = new Date().getFullYear();
 
     // Render inicial
     renderProductos("all");
+
+    // Pequeño alias para no escribir document.querySelector siempre
+    function $(s){ return document.querySelector(s); }
   </script>
 </body>
 </html>
