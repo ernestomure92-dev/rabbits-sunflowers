@@ -14,7 +14,7 @@
       --verde-dark:#2E8742;
       --cafe:#5A3412;
       --dorado:#FFB84A;
-      --crema:#FFF7FB;   
+      --crema:#FFFDF9;   /* Fondo más limpio y neutro */
       --marfil:#FFF1F5;  
       --texto:#1B1B1B;
       --gris-600:#6B6B6B;
@@ -22,11 +22,11 @@
     }
     html[data-theme="sanvalentin"]{
       --amarillo:#FFD84D;
-      --verde:#E2557A;       
-      --verde-dark:#C94366;
-      --cafe:#5A3412;
+      --verde:#D83D68;       /* Rosa más vibrante para lectura */
+      --verde-dark:#A62D4F;
+      --cafe:#4A2A0E;
       --dorado:#F1A5B9;
-      --crema:#FFF1F5;
+      --crema:#FFF8FA;       /* Fondo rosa muy sutil */
       --marfil:#FFE7EF;
       --texto:#1B1B1B;
       --gris-600:#755964;
@@ -37,22 +37,21 @@
     *{box-sizing:border-box}
     html,body{
       margin:0; padding:0;
-      font-family:system-ui,-apple-system,sans-serif;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
       color:var(--texto);
       background-color: var(--crema);
       transition: background 0.4s ease;
+      line-height: 1.5;
     }
 
-    /* Fondo especial solo para San Valentín */
+    /* Fondo Neutro y Elegante (Eliminada la imagen saturada) */
     html[data-theme="sanvalentin"] body {
       background:
-        radial-gradient(circle at 20% 20%, rgba(226,85,122,.08), transparent 40%),
-        radial-gradient(circle at 80% 30%, rgba(226,85,122,.06), transparent 45%),
-        url("assets/fondos/san-valentin.jpg") repeat,
+        radial-gradient(circle at 10% 10%, rgba(216,61,104,0.05), transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(216,61,104,0.03), transparent 40%),
         var(--crema);
     }
 
-    /* Clase para ocultar texto manteniendo accesibilidad SEO */
     .visualmente-oculto {
       position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
       overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
@@ -63,231 +62,24 @@
     .container{max-width:1100px;margin:0 auto;padding:0 16px}
 
     /* ===== COMPONENTES ===== */
-    header{position:sticky;top:0;z-index:20;background:rgba(253,253,252,.9);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--borde)}
-    header .wrap{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--cafe)}
-    .brand img{width:48px;height:auto;border-radius:12px}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--borde)}
+    header .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--cafe); font-size: 1.1rem;}
+    .brand img{width:44px;height:44px;border-radius:10px; object-fit: cover;}
 
-    nav a{padding:8px 10px;border-radius:8px; font-size: 14px;}
-    nav a:hover{background:#fff0be}
+    nav a{padding:8px 12px; border-radius:8px; font-weight: 500; font-size: 14px;}
+    nav a:hover{background: rgba(0,0,0,0.04);}
 
-    .btn{display:inline-block;padding:12px 16px;border-radius:12px;font-weight:700; cursor: pointer; border: none; text-align: center; transition: opacity 0.2s;}
-    .btn:hover{opacity: 0.9;}
-    .btn-primary{background:var(--amarillo);color:#3c2a00;border:1px solid #e3c148}
-    .btn-secondary{background:var(--verde);color:#fff;border:1px solid var(--verde-dark)}
-    .btn-outline{border:1px solid var(--texto);color:var(--texto);background:transparent}
+    .btn{display:inline-block;padding:14px 20px;border-radius:14px;font-weight:700; cursor: pointer; border: none; text-align: center; transition: transform 0.2s, opacity 0.2s;}
+    .btn:active{transform: scale(0.96);}
+    .btn-primary{background:var(--amarillo);color:#3c2a00;border:1px solid rgba(0,0,0,0.05)}
+    .btn-secondary{background:var(--verde);color:#fff;}
+    .btn-outline{border:1px solid var(--borde);color:var(--texto);background:#fff}
 
     /* ===== SECCIONES ===== */
-    .hero{padding:28px 0}
-    .hero-grid{display:grid;gap:16px}
-    .hero h1{font-size:32px;line-height:1.1;margin:0 0 8px;color:var(--cafe)}
+    .hero{padding:40px 0}
+    .hero-grid{display:grid;gap:24px}
+    .hero h1{font-size:36px;line-height:1.2;margin:0 0 12px;color:var(--cafe)}
     
     .hero .img-container{
-      border-radius:24px;
-      background:var(--marfil);
-      border:1px solid var(--borde);
-      display:flex; align-items:center; justify-content:center;
-      padding:24px;
-    }
-    .hero .img-container img{
-      max-width:100%;
-      max-height:320px;
-      object-fit:contain;
-    }
-
-    .search input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--borde);outline:none;background:#fff; margin-top: 15px;}
-
-    .badges{display:flex;gap:8px;overflow:auto;padding-bottom:10px}
-    .badge{padding:8px 12px;border:1px solid var(--borde);border-radius:999px;white-space:nowrap;background:#fff;cursor:pointer}
-    .badge.active{background:#fff7d6;border-color:var(--dorado)}
-
-    .section{padding:20px 0}
-    .grid{display:grid;gap:12px}
-    .card{border:1px solid var(--borde);border-radius:16px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
-    .card .thumb{position:relative;aspect-ratio:4/5;background:#f8f6f0}
-    .card .thumb img{width:100%;height:100%;object-fit:cover}
-    .chip{position:absolute;top:8px;left:8px;background:var(--dorado);color:#3a2b00;font-size:12px;padding:4px 8px;border-radius:999px}
-    .price{color:var(--verde);font-weight:800}
-
-    /* Banner de Oferta del Día */
-    .offer-banner{background:var(--amarillo); padding:15px; border-radius:16px; margin-bottom:20px; border:2px dashed var(--cafe); display:none; text-align: center;}
-
-    .whatsapp-fab{position:fixed;right:16px;bottom:16px;background:#25D366;color:#fff;border-radius:999px;padding:14px 16px;font-weight:700;box-shadow:0 10px 25px rgba(0,0,0,.15);z-index:100}
-
-    @media(min-width:768px){
-      .hero-grid{grid-template-columns:1.1fr 1fr;align-items:center}
-      .grid.products{grid-template-columns:repeat(3,1fr)}
-      .hero h1{font-size:42px}
-    }
-    @media(min-width:1024px){
-      .grid.products{grid-template-columns:repeat(4,1fr)}
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="container wrap">
-      <a href="#" class="brand">
-        <img src="assets/logo.png" alt="Logo Rabbits & Sunflowers" onerror="this.style.opacity='0'">
-        <span>Rabbits &amp; Sunflowers</span>
-      </a>
-      <nav aria-label="Navegación">
-        <a href="#catalogo">Catálogo</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <h1>Arreglos que hablan por ti.<br><span style="color:var(--verde)">Entrega HOY en CDMX 🚀</span></h1>
-        <p>Flores frescas para momentos inolvidables. Pide por WhatsApp y sorprende hoy mismo.</p>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <a id="ctaHero" class="btn btn-secondary" target="_blank">Pedir ahora 💬</a>
-          <a href="#catalogo" class="btn btn-primary">Ver catálogo ✨</a>
-        </div>
-        <div class="search">
-          <label for="buscar" class="visualmente-oculto">Buscar arreglos</label>
-          <input id="buscar" type="search" placeholder="Buscar: rosas, girasoles, cumpleaños…">
-        </div>
-      </div>
-      <div class="img-container">
-        <img src="assets/logo.png" alt="Arreglo floral del día">
-      </div>
-    </div>
-  </section>
-
-  <section id="catalogo" class="section">
-    <div class="container">
-      
-      <div id="ofertaDia" class="offer-banner">
-        <strong>🔥 Oferta del día:</strong> <span id="nombreOferta"></span> con un 15% de descuento. 
-      </div>
-
-      <h2 style="color:var(--cafe)">Colección Floral</h2>
-      <div class="badges" id="chips">
-        <button class="badge active" data-filter="all">Todo</button>
-        <button class="badge" data-filter="cumple">Cumpleaños</button>
-        <button class="badge" data-filter="aniversario">Aniversario</button>
-        <button class="badge" data-filter="express">Express hoy</button>
-        <button class="badge" data-filter="regalos">Regalos</button>        
-      </div>
-      
-      <div class="grid products" id="productos" style="margin-top:20px"></div>
-    </div>
-  </section>
-
-  <footer style="border-top:1px solid var(--borde); padding:40px 0; text-align:center; margin-top:40px">
-    <div class="container">
-      <p><strong>Rabbits & Sunflowers</strong></p>
-      <small>© <span id="year"></span> Hecho con amor en CDMX 🌷</small>
-    </div>
-  </footer>
-
-  <a id="waFab" class="whatsapp-fab" target="_blank">WhatsApp</a>
-
-  <script>
-    // CONFIGURACIÓN
-    const WA_NUMBER = "521551234567"; 
-
-    const CATALOGO = [
-      { id:"te-pienso", titulo:"Te pienso 🌻", precio:599, categoria:["cumple","express","regalos"], img:"https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=800", express:true },
-      { id:"dulce-momento", titulo:"Dulce momento 🍫+🌹", precio:949, categoria:["aniversario","regalos"], img:"https://images.unsplash.com/photo-1509043759401-136742328bb3?w=800", express:false },
-      { id:"primavera", titulo:"Primavera en tus manos ✨", precio:849, categoria:["cumple","regalos"], img:"https://images.unsplash.com/photo-1485686531765-ba676f7e57d1?w=800", express:false },
-      { id:"lo-siento", titulo:"Condolencias 🕊️", precio:799, categoria:["condolencias"], img:"https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=800", express:false },
-      { id:"rs-bouquet", titulo:"Bouquet R&S", precio:999, categoria:["aniversario","express","regalos"], img:"https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=800", express:true },
-      { id:"regalo-bolsa", titulo:"Regalo Premium 🎁", precio:1200, categoria:["express","regalos"], img:"https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800", express:true }  
-    ];
-
-    // UTILIDADES (Refactorizado para no duplicar $)
-    const $ = s => document.querySelector(s);
-    const money = n => `$${n.toLocaleString("es-MX")} MXN`;
-
-    // 1. APLICAR TEMA POR FECHA
-    function aplicarTemaEstacional() {
-      const hoy = new Date();
-      const mes = hoy.getMonth() + 1; // Febrero = 2
-      const dia = hoy.getDate();
-      
-      if (mes === 2 && dia <= 14) {
-        document.documentElement.setAttribute('data-theme', 'sanvalentin');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'base');
-      }
-    }
-
-    // 2. LÓGICA DE OFERTA DINÁMICA
-    function configurarOferta() {
-      const dia = new Date().getDate();
-      const productoOferta = CATALOGO[dia % CATALOGO.length]; // Elige uno distinto cada día
-      
-      $("#ofertaDia").style.display = "block";
-      $("#nombreOferta").textContent = productoOferta.titulo;
-    }
-
-    // 3. RENDER DE PRODUCTOS
-    function renderProductos(filtro="all", busqueda=""){
-      const wrap = $("#productos");
-      wrap.innerHTML = "";
-      
-      let items = CATALOGO.filter(p => {
-        const coincideFiltro = filtro === "all" || p.categoria.includes(filtro);
-        const coincideBusqueda = p.titulo.toLowerCase().includes(busqueda.toLowerCase());
-        return coincideFiltro && coincideBusqueda;
-      });
-
-      if(items.length === 0) {
-        wrap.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--gris-600);">No se encontraron arreglos.</p>`;
-        return;
-      }
-
-      items.forEach(p => {
-        const card = document.createElement("article");
-        card.className = "card";
-        card.innerHTML = `
-          <div class="thumb">
-            <img src="${p.img}" alt="${p.titulo}" loading="lazy">
-            ${p.express ? `<span class="chip">Express</span>` : ``}
-          </div>
-          <div style="padding:15px; flex-grow:1; display:flex; flex-direction:column; justify-content:space-between;">
-            <div>
-              <h4 style="margin:0 0 5px; color:var(--cafe)">${p.titulo}</h4>
-              <p class="price">${money(p.precio)}</p>
-            </div>
-            <a class="btn btn-secondary" style="margin-top:10px" 
-               href="https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hola! Me interesa el arreglo: ' + p.titulo)}" 
-               target="_blank">Pedir por WhatsApp</a>
-          </div>
-        `;
-        wrap.appendChild(card);
-      });
-    }
-
-    // EVENTOS
-    $("#buscar").addEventListener("input", e => {
-      const activeBtn = $(".badge.active");
-      renderProductos(activeBtn ? activeBtn.dataset.filter : "all", e.target.value);
-    });
-
-    $("#chips").addEventListener("click", e => {
-      const btn = e.target.closest(".badge");
-      if(!btn) return;
-      document.querySelectorAll(".badge").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      renderProductos(btn.dataset.filter, $("#buscar").value);
-    });
-
-    // INICIALIZACIÓN AL CARGAR
-    aplicarTemaEstacional();
-    configurarOferta();
-    renderProductos();
-    
-    $("#year").textContent = new Date().getFullYear();
-    $("#ctaHero").href = `https://wa.me/${WA_NUMBER}?text=Hola! Quiero ver opciones para entrega hoy 🌻`;
-    $("#waFab").href = `https://wa.me/${WA_NUMBER}?text=Hola! Necesito informes sobre un pedido 💐`;
-  </script>
-</body>
-</html>
+      border
