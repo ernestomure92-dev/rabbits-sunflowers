@@ -7,83 +7,67 @@
   <style>
     /* ===== SISTEMA DE TEMAS ===== */
     :root, html[data-theme="base"]{
-      --amarillo:#FFD84D;
-      --verde:#6AC26A;
-      --verde-dark:#2E8742;
-      --cafe:#5A3412;
-      --dorado:#FFB84A;
-      --crema:#FFFDF9;
-      --texto:#1B1B1B;
-      --gris-600:#6B6B6B;
-      --borde:#F0D6E0;
+      --amarillo:#FFD84D; --verde:#6AC26A; --verde-dark:#2E8742;
+      --cafe:#5A3412; --dorado:#FFB84A; --crema:#FFFDF9;
+      --texto:#1B1B1B; --gris-600:#6B6B6B; --borde:#F0D6E0;
     }
     html[data-theme="sanvalentin"]{
-      --amarillo:#FFD84D;
-      --verde:#D83D68;
-      --verde-dark:#A62D4F;
-      --cafe:#4A2A0E;
-      --crema:#FFF8FA;
-      --texto:#1B1B1B;
-      --borde:#F3C6D6;
+      --amarillo:#FFD84D; --verde:#D83D68; --verde-dark:#A62D4F;
+      --cafe:#4A2A0E; --crema:#FFF8FA; --texto:#1B1B1B; --borde:#F3C6D6;
     }
 
     /* ===== BASE ===== */
     *{box-sizing:border-box}
     html,body{
       margin:0; padding:0;
-      font-family: system-ui, sans-serif;
-      color:var(--texto);
-      background-color: var(--crema);
-      transition: background 0.4s ease;
-      scroll-behavior: smooth;
+      font-family: system-ui, -apple-system, sans-serif;
+      color:var(--texto); background-color: var(--crema);
+      transition: background 0.4s ease; scroll-behavior: smooth;
     }
-
-    /* Fondo Neutro San Valentín */
-    html[data-theme="sanvalentin"] body {
-      background: radial-gradient(circle at 10% 10%, rgba(216,61,104,0.04), transparent 40%), var(--crema);
-    }
-
-    .container{max-width:1100px;margin:0 auto;padding:0 16px}
+    .container{max-width:1100px; margin:0 auto; padding:0 16px}
     .visualmente-oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
 
     /* ===== HEADER & HERO ===== */
-    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--borde)}
-    .header-wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--cafe)}
-    .brand img{width:40px;height:40px;border-radius:8px;object-fit:cover}
+    header{position:sticky; top:0; z-index:20; background:rgba(255,255,255,0.8); backdrop-filter:blur(10px); border-bottom:1px solid var(--borde)}
+    .header-wrap{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; color:var(--cafe); text-decoration:none}
+    .brand img{width:40px; height:40px; border-radius:8px; object-fit:cover}
 
     .hero{padding:40px 0}
-    .hero-grid{display:grid;gap:24px}
-    .hero h1{font-size:36px;margin:0;color:var(--cafe)}
-    .img-container{border-radius:32px;background:#fff;border:1px solid var(--borde);padding:20px;text-align:center}
-    .img-container img{max-height:350px;margin:0 auto}
+    .hero-grid{display:grid; gap:24px}
+    .hero h1{font-size:36px; margin:0; color:var(--cafe); line-height:1.2}
+    .img-container{border-radius:32px; background:#fff; border:1px solid var(--borde); padding:20px; text-align:center; box-shadow: 0 10px 30px rgba(0,0,0,0.02)}
+    .img-container img{max-height:350px; width:auto}
 
-    /* ===== BOTONES & INPUTS ===== */
-    .btn{display:inline-block;padding:14px 22px;border-radius:14px;font-weight:700;text-decoration:none;transition:0.2s;border:none;cursor:pointer}
-    .btn-secondary{background:var(--verde);color:#fff}
-    .btn-outline{border:1px solid var(--borde);background:#fff}
-    .search input{width:100%;padding:14px;border-radius:14px;border:1px solid var(--borde);margin-top:20px}
+    /* ===== BOTONES & FILTROS ===== */
+    .btn{display:inline-block; padding:14px 22px; border-radius:14px; font-weight:700; text-decoration:none; transition:0.2s; border:none; cursor:pointer; text-align:center}
+    .btn-secondary{background:var(--verde); color:#fff}
+    .btn-outline{border:1px solid var(--borde); background:#fff}
+    
+    .search input{width:100%; padding:14px; border-radius:14px; border:1px solid var(--borde); margin: 20px 0 10px 0; font-size:16px}
+    
+    .badges{display:flex; gap:8px; overflow-x:auto; padding:10px 0; scrollbar-width: none}
+    .badge{padding:10px 18px; border:1px solid var(--borde); border-radius:999px; white-space:nowrap; background:#fff; cursor:pointer; font-weight:500; transition: 0.2s}
+    .badge.active{background:var(--amarillo); border-color:transparent; color:var(--cafe)}
 
     /* ===== PRODUCTOS ===== */
-    .grid{display:grid;gap:16px;margin-top:20px}
-    .card{background:#fff;border:1px solid var(--borde);border-radius:20px;overflow:hidden}
-    .thumb{aspect-ratio:1/1;background:#f9f9f9;position:relative}
-    .thumb img{width:100%;height:100%;object-fit:cover}
-    .price{color:var(--verde);font-weight:800;font-size:1.2rem}
+    .grid{display:grid; gap:16px; margin-top:20px}
+    .card{background:#fff; border:1px solid var(--borde); border-radius:20px; overflow:hidden; transition: transform 0.3s}
+    .card:hover{transform: translateY(-5px)}
+    .thumb{aspect-ratio:1/1; background:#f9f9f9; position:relative}
+    .thumb img{width:100%; height:100%; object-fit:cover}
+    .price{color:var(--verde); font-weight:800; font-size:1.2rem}
 
-    /* ===== SECCIÓN RESEÑAS (NUEVA) ===== */
-    .reviews-section{background:rgba(255,255,255,0.5);padding:60px 0;margin-top:40px;border-radius:40px 40px 0 0}
-    .reviews-grid{display:grid;gap:20px;grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));}
-    .review-card{background:#fff;padding:25px;border-radius:20px;border:1px solid var(--borde);box-shadow:0 4px 15px rgba(0,0,0,0.02)}
-    .stars{color:var(--amarillo);margin-bottom:10px;font-size:1.2rem}
-    .review-text{font-style:italic;color:var(--gris-600);margin-bottom:15px}
-    .review-author{font-weight:700;display:flex;align-items:center;gap:10px}
-    .author-img{width:35px;height:35px;background:var(--marfil);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px}
+    /* ===== RESEÑAS ===== */
+    .reviews-section{background:rgba(255,255,255,0.5); padding:60px 0; margin-top:40px; border-top:1px solid var(--borde)}
+    .reviews-grid{display:grid; gap:20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))}
+    .review-card{background:#fff; padding:25px; border-radius:20px; border:1px solid var(--borde)}
+    .stars{color:var(--amarillo); margin-bottom:10px}
 
-    .whatsapp-fab{position:fixed;right:20px;bottom:20px;background:#25D366;color:#fff;border-radius:999px;padding:16px 24px;font-weight:700;text-decoration:none;z-index:100;box-shadow:0 8px 20px rgba(0,0,0,0.1)}
+    .whatsapp-fab{position:fixed; right:20px; bottom:20px; background:#25D366; color:#fff; border-radius:999px; padding:16px 24px; font-weight:700; text-decoration:none; z-index:100; box-shadow:0 8px 20px rgba(0,0,0,0.1)}
 
     @media(min-width:768px){
-      .hero-grid{grid-template-columns:1.2fr 1fr;align-items:center}
+      .hero-grid{grid-template-columns:1.2fr 1fr; align-items:center}
       .grid{grid-template-columns:repeat(3,1fr)}
       .hero h1{font-size:48px}
     }
@@ -100,9 +84,9 @@
         <img src="assets/logo.png" alt="R&S" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3062/3062223.png'">
         <span>Rabbits &amp; Sunflowers</span>
       </a>
-      <nav style="display:flex;gap:15px">
-        <a href="#catalogo" style="font-size:14px;font-weight:500">Catálogo</a>
-        <a href="#resenas" style="font-size:14px;font-weight:500">Reseñas</a>
+      <nav style="display:flex; gap:15px">
+        <a href="#catalogo" style="font-size:14px; font-weight:500; text-decoration:none; color:inherit">Catálogo</a>
+        <a href="#resenas" style="font-size:14px; font-weight:500; text-decoration:none; color:inherit">Reseñas</a>
       </nav>
     </div>
   </header>
@@ -110,123 +94,142 @@
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <h1>Flores frescas para<br><span style="color:var(--verde)">momentos épicos 🚀</span></h1>
-        <p style="color:var(--gris-600)">Entrega hoy mismo en CDMX. Calidad premium garantizada.</p>
-        <div style="display:flex;gap:10px;margin-top:20px">
-          <a id="ctaHero" class="btn btn-secondary" target="_blank">Pedir WhatsApp 💬</a>
+        <h1>Arreglos que<br><span style="color:var(--verde)">hablan por ti 🚀</span></h1>
+        <p style="color:var(--gris-600); font-size:1.1rem">Flores frescas con entrega el mismo día en CDMX.</p>
+        <div style="display:flex; gap:10px; margin-top:20px">
+          <a id="ctaHero" class="btn btn-secondary" target="_blank">Pedir por WhatsApp 💬</a>
           <a href="#catalogo" class="btn btn-outline">Ver Catálogo</a>
         </div>
         <div class="search">
-          <input id="buscar" type="search" placeholder="Busca tu flor favorita...">
+          <input id="buscar" type="search" placeholder="Busca rosas, girasoles, amor...">
+        </div>
+        <div class="badges" id="filtros">
+          <button class="badge active" data-filter="all">Todo</button>
+          <button class="badge" data-filter="cumple">Cumpleaños</button>
+          <button class="badge" data-filter="aniversario">Aniversario</button>
+          <button class="badge" data-filter="express">Express hoy</button>
+          <button class="badge" data-filter="regalos">Regalos</button>
         </div>
       </div>
       <div class="img-container">
-        <img src="assets/hero/descarga.jfif" alt="Arreglo principal">
+        <img src="assets/hero/jorge.png" alt="Arreglo del día">
       </div>
     </div>
   </section>
 
   <section id="catalogo" class="container" style="padding:40px 0">
-    <h2 style="color:var(--cafe)">Nuestra Colección</h2>
+    <h2 style="color:var(--cafe)">Colección Floral</h2>
     <div id="productos" class="grid"></div>
   </section>
 
   <section id="resenas" class="reviews-section">
     <div class="container">
-      <h2 style="color:var(--cafe);text-align:center;margin-bottom:40px">Lo que dicen nuestros clientes ✨</h2>
+      <h2 style="color:var(--cafe); text-align:center; margin-bottom:40px">Experiencias de nuestros clientes ✨</h2>
       <div class="reviews-grid">
         <article class="review-card">
           <div class="stars">★★★★★</div>
-          <p class="review-text">"El arreglo llegó idéntico a la foto y las flores olían delicioso. ¡A mi novia le encantó!"</p>
-          <div class="review-author">
-            <div class="author-img">MA</div>
-            <span>Miguel Arreola</span>
-          </div>
+          <p>"El servicio por WhatsApp es súper rápido y las flores llegaron muy frescas."</p>
+          <small><strong>- María José G.</strong></small>
         </article>
         <article class="review-card">
           <div class="stars">★★★★★</div>
-          <p class="review-text">"Increíble servicio. Pedí a las 11 am y para las 2 pm ya estaba entregado en la oficina."</p>
-          <div class="review-author">
-            <div class="author-img">LC</div>
-            <span>Lucía C.</span>
-          </div>
+          <p>"Pedí un ramo de aniversario y fue el más bonito que he comprado en CDMX."</p>
+          <small><strong>- Carlos R.</strong></small>
         </article>
         <article class="review-card">
           <div class="stars">★★★★★</div>
-          <p class="review-text">"Excelente atención por WhatsApp, resolvieron todas mis dudas sobre el envío."</p>
-          <div class="review-author">
-            <div class="author-img">RP</div>
-            <span>Roberto Palazuelos</span>
-          </div>
+          <p>"Me salvaron con el envío express, llegó en menos de 3 horas."</p>
+          <small><strong>- Fernanda S.</strong></small>
         </article>
       </div>
     </div>
   </section>
 
-  <footer style="padding:60px 0;text-align:center;color:var(--gris-600)">
+  <footer style="padding:60px 0; text-align:center; color:var(--gris-600)">
     <div class="container">
       <p><strong>Rabbits & Sunflowers</strong></p>
-      <small>© <span id="year"></span> Florería artesanal en CDMX</small>
+      <small>© <span id="year"></span> Hecho con amor en CDMX 🌷</small>
     </div>
   </footer>
 
   <a id="waFab" class="whatsapp-fab" target="_blank">WhatsApp 💬</a>
 
   <script>
-    // 1. UTILIDADES PRIMERO (Evita que la página quede en blanco)
+    // 1. UTILIDADES Y DATOS
     const $ = s => document.querySelector(s);
-    const WA_NUMBER = "521551234567";
+    const WA_NUMBER = "521551234567"; // Tu número aquí
 
     const CATALOGO = [
-      { titulo:"Te pienso 🌻", precio:599, img:"https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=600" },
-      { titulo:"Bouquet R&S 🌹", precio:999, img:"https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600" },
-      { titulo:"Dulce Amor 🍫", precio:849, img:"https://images.unsplash.com/photo-1509043759401-136742328bb3?w=600" },
-      { titulo:"Primavera ✨", precio:1200, img:"https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600" }
+      { titulo:"Te pienso 🌻", precio:599, cat:["cumple","express","regalos"], img:"https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=600" },
+      { titulo:"Bouquet R&S 🌹", precio:999, cat:["aniversario","express"], img:"https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600" },
+      { titulo:"Dulce Amor 🍫", precio:849, cat:["aniversario","regalos"], img:"https://images.unsplash.com/photo-1509043759401-136742328bb3?w=600" },
+      { titulo:"Primavera ✨", precio:1200, cat:["cumple","regalos"], img:"https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600" },
+      { titulo:"Caja de Rosas 🎁", precio:1100, cat:["aniversario","regalos"], img:"https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=600" }
     ];
 
-    // 2. FUNCIONES DE RENDER
-    function renderProductos(busqueda = ""){
+    // 2. RENDERIZADO CON FILTROS
+    function render(filtro = "all", busqueda = ""){
       const wrap = $("#productos");
       if(!wrap) return;
       wrap.innerHTML = "";
       
-      const filtrados = CATALOGO.filter(p => p.titulo.toLowerCase().includes(busqueda.toLowerCase()));
+      const filtrados = CATALOGO.filter(p => {
+        const matchCat = filtro === "all" || p.cat.includes(filtro);
+        const matchSearch = p.titulo.toLowerCase().includes(busqueda.toLowerCase());
+        return matchCat && matchSearch;
+      });
+
+      if(filtrados.length === 0) {
+        wrap.innerHTML = "<p style='grid-column:1/-1; text-align:center'>No encontramos ese arreglo, ¡pero podemos diseñarlo para ti!</p>";
+        return;
+      }
 
       filtrados.forEach(p => {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-          <div class="thumb"><img src="${p.img}" loading="lazy"></div>
-          <div style="padding:15px">
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <div class="thumb"><img src="${p.img}" alt="${p.titulo}" loading="lazy"></div>
+          <div style="padding:18px">
             <h4 style="margin:0">${p.titulo}</h4>
             <p class="price">$${p.precio} MXN</p>
-            <a class="btn btn-secondary" style="width:100%;display:block;font-size:14px" 
-               href="https://wa.me/${WA_NUMBER}?text=Hola, quiero el arreglo ${p.titulo}" target="_blank">Pedir 💬</a>
+            <a class="btn btn-secondary" style="width:100%; display:block; font-size:14px" 
+               href="https://wa.me/${WA_NUMBER}?text=Hola! Me interesa el arreglo: ${p.titulo}" target="_blank">Pedir 💬</a>
           </div>
         `;
-        wrap.appendChild(card);
+        wrap.appendChild(div);
       });
     }
 
-    // 3. LOGICA ESTACIONAL
-    function aplicarTema(){
-      const hoy = new Date();
-      if(hoy.getMonth() === 1 && hoy.getDate() <= 14){ // Febrero
-        document.documentElement.setAttribute('data-theme', 'sanvalentin');
-      }
-    }
-
-    // 4. INICIALIZACIÓN (Solo cuando el DOM está listo)
+    // 3. LOGICA DE INTERFAZ
     document.addEventListener("DOMContentLoaded", () => {
-      aplicarTema();
-      renderProductos();
-      
+      // Tema estacional
+      const hoy = new Date();
+      if(hoy.getMonth() === 1 && hoy.getDate() <= 14) document.documentElement.setAttribute('data-theme', 'sanvalentin');
+
+      // Año
       $("#year").textContent = new Date().getFullYear();
-      $("#buscar").addEventListener("input", e => renderProductos(e.target.value));
-      
-      const link = `https://wa.me/${WA_NUMBER}?text=Hola! Quiero informes 🌻`;
-      $("#ctaHero").href = link;
-      $("#waFab").href = link;
+
+      // Buscador
+      $("#buscar").addEventListener("input", e => {
+        const activeCat = $(".badge.active").dataset.filter;
+        render(activeCat, e.target.value);
+      });
+
+      // Filtros (Chips)
+      $("#filtros").addEventListener("click", e => {
+        const btn = e.target.closest(".badge");
+        if(!btn) return;
+        document.querySelectorAll(".badge").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        render(btn.dataset.filter, $("#buscar").value);
+      });
+
+      // WhatsApp Links
+      const msg = encodeURIComponent("Hola! Vengo de la web y quiero informes sobre flores 🌻");
+      $("#ctaHero").href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+      $("#waFab").href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+
+      render(); // Carga inicial
     });
   </script>
 </body>
